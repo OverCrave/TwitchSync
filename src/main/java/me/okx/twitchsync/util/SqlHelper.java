@@ -25,6 +25,7 @@ public class SqlHelper {
 
     CompletableFuture.runAsync(() -> {
       try {
+        Class.forName("org.sqlite.JDBC");
         connection = DriverManager.getConnection("jdbc:sqlite:" + db);
 
         Statement stmt = connection.createStatement();
@@ -35,7 +36,7 @@ public class SqlHelper {
             "id VARCHAR(12), " +
             "access_token VARCHAR(32), " +
             "refresh_token VARCHAR(48))");
-      } catch (SQLException e) {
+      } catch (SQLException | ClassNotFoundException e) {
         e.printStackTrace();
       }
     });
