@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'me.okx.twitchsync'
-version '1.4.2'
+version '1.5.0'
 
 shadowJar {
     classifier = null
@@ -16,7 +16,7 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven {
-        url 'http://nexus.hc.to/content/repositories/pub_releases'
+        url 'https://nexus.hc.to/content/repositories/pub_releases'
     }
     maven {
         url 'https://hub.spigotmc.org/nexus/content/groups/public/'
@@ -26,7 +26,8 @@ repositories {
 dependencies {
     //compile 'com.okta.jwt:okta-jwt-verifier:0.4.1-SNAPSHOT'
     //runtime 'com.okta.jwt:okta-jwt-verifier-impl:0.4.1-SNAPSHOT'
-    compile 'com.nimbusds:oauth2-oidc-sdk:6.9'
-    shadow 'org.spigotmc:spigot-api:1.14-R0.1-SNAPSHOT'
+    implementation 'com.nimbusds:oauth2-oidc-sdk:9.19'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    shadow 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
     shadow 'net.milkbowl.vault:VaultAPI:1.7'
 }
