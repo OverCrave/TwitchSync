@@ -1,6 +1,6 @@
 package me.okx.twitchsync;
 
-import com.sun.net.httpserver.HttpsServer;
+import com.sun.net.httpserver.HttpServer;
 import me.okx.twitchsync.data.sync.SyncMessage;
 import me.okx.twitchsync.data.sync.SyncResponse;
 import me.okx.twitchsync.data.sync.SyncResponseFailure;
@@ -17,7 +17,7 @@ public class TwitchServer {
   private TwitchSync plugin;
   private int port;
 
-  private HttpsServer server;
+  private HttpServer server;
 
   public TwitchServer(TwitchSync plugin) {
     this.plugin = plugin;
@@ -25,7 +25,7 @@ public class TwitchServer {
   }
 
   public void start() throws IOException {
-    server = HttpsServer.create(new InetSocketAddress(port), 0);
+    server = HttpServer.create(new InetSocketAddress(port), 0);
     server.createContext("/", ex -> {
       try {
         plugin.debug("Handling request " + ex + " on " + Thread.currentThread().getName());
